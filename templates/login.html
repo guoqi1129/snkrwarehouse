@@ -3,15 +3,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'mycss/awesome-bootstrap-checkbox.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'mycss/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'mycss/style.css' %}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery.cookie/jquery.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'myjs/login.js' %}"></script>
     <title>宇宙中心</title>
-</head>
-<body>
-<div class="container">
-    <h1>Hello, world! </h1>
+</head><body>
+<span class="header-ribbon"/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="login-panel">
+                <h4 class="login-panel-title">宇宙中心</h4>
+                <p class="login-panel-tagline">宇宙中心穿越时空，让你快速到达宇宙中任一星球</p>
+                <div class="login-panel-section">
+                    <div class="form-group">
+                        <div class="input-group margin-bottom-sm">
+                            {% csrf_token %}
+                            <span class="input-group-addon"></span>
+                            <input id="username" class="form-control" type="text" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            <input id="password" class="form-control" type="password" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="checkbox checkbox-circle checkbox-success checkbox-small">
+                        <input type="checkbox" id="checkbox1">
+                        <label for="checkbox1">Keep me logged in</label>
+                        <a href="#" class="pull-right">找回密码</a>
+                    </div>
+                </div>
+                <div class="login-panel-section">
+                    <button id="logins" type="button" class="btn btn-primary"> 登陆</button>
+                    <button id="creat" type="button" class="btn btn-secondary"> 创建账户</button>
+                </div>
+                <div>
+                <text id="inform"></text>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

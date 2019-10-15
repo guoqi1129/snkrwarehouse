@@ -1,0 +1,25 @@
+{
+  "name": "bigbang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bower": "^1.8.8"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guoqi1129/snkrwarehouse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guoqi1129/snkrwarehouse/issues"
+  },
+  "homepage": "https://github.com/guoqi1129/snkrwarehouse#readme"
+}
