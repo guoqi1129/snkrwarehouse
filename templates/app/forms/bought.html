@@ -1,0 +1,36 @@
+
+{% include 'app/head.html' %}
+{% include 'app/sidebar.html' %}
+{% include 'app/mid.html' %}
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">新飞船信息给这儿填写</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p>{{ inform }}</p>
+                <div class="form-group" >
+                    <form action="newSKU.html" method="post" id="newSKUform">
+                        {% csrf_token %}
+                        <div>
+                            <input class="btn btn-block btn-primary btn-lg" type="submit" value="确认">
+                        </div>
+                    </form>
+                </div>
+                <!-- /.form-group -->
+            </div>
+
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+
+    {% include 'app/foot.html' %}
