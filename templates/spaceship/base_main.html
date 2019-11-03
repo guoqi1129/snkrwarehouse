@@ -1,0 +1,14 @@
+{% extends 'common/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <!-- skins-->
+    <link rel="stylesheet" href="{% static 'mycss/skins/_all-skins.min.css' %}">
+    {% block css1 %}
+    {% endblock %}
+{% endblock %}
+{% block js %}
+    <!-- SlimScroll -->
+    <script src="/static/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    {% block js1 %}
+    {% endblock %}
+{% endblock %}

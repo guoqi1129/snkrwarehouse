@@ -1,0 +1,83 @@
+{% extends 'spaceship/base_main.html' %}
+{% block js1 %}
+    <script src="/static/select2/dist/js/select2.full.js"></script>
+    <script src="/static/myjs/myshoes.js"></script>
+    <script src="/static/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/static/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/static/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+{% endblock %}
+{% block css1 %}
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/static/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/static/datatables.net-bs/css/dataTables.bootstrap.min.css">
+{% endblock %}
+{% block smalltitle %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h4 class="text-warning">{{ inform }}</h4>
+                    <h3 class="box-title"></h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    {% csrf_token %}
+                    <table id="example1" class="table table-bordered table-hover">
+
+
+                    </table>
+
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+            <div class="modal fade" id="modal-default">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">快递信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group" >
+                                <form action="." method="post" id="ship">
+                            <div class="col-md-6">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" class="form-control" id="id_id">
+                            <p><label>购买日期：</label>
+                                <input type="text" name="buy_date" class="form-control" id="id_buy_date" disabled></p>
+                            <p><label>商品名称：</label>
+                            <input type="text" name="name" class="form-control" id="id_name" disabled></p>
+                            <p><label>商品编号：</label>
+                            <input type="text" name="sku" class="form-control" id="id_sku" disabled></p>
+                            <p><label>尺码：</label>
+                            <input type="text" name="size" class="form-control" id="id_size" disabled></p>
+                            </div>
+                            <div class="col-md-6">{{ form_ship_info.as_p }}
+                                {% for field in form_seller_info %}
+                                    {{ field.label_tag }} {{ field }}
+
+                                {% endfor %}
+                            </div>
+                            <p></p>
+                                <div class="modal-footer">
+                                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+        </div>
+    </div>
+{% endblock %}

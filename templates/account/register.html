@@ -1,0 +1,35 @@
+{% extends 'account/login.html' %}
+{% block msg %}
+    申请船票
+{% endblock %}
+{% block css %}
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/static/select2/dist/css/select2.min.css">
+{% endblock %}
+{% block form %}
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}{{ field.errors }}
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            {% endfor %}
+            {% endblock %}
+            {% block inform %}
+                {% if inform %}
+                    <p class="text-warning text-center">{{ inform }}</p>
+                {% endif %}
+            {% endblock %}
+
+
+        <!-- /.social-auth-links -->
+{% block herf %}
+        <a href="{% url "spaceship_account:login" %}" class="text-center">已有船票？</a>
+{% endblock %}
+{% block js %}
+    <!-- Select2 -->
+    <script src="/static/select2/dist/js/select2.full.js"></script>
+    <script src="/static/myjs/register.js"></script>
+{% endblock %}
+

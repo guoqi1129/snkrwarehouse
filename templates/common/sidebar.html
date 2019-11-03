@@ -1,0 +1,22 @@
+{% load index_filter %}
+{% for k,v in auth %}
+
+    <li class="treeview">
+        <a href="#">
+
+            <i class="fa {{ v|getkeys }}"></i> <span>{{ k }}</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+
+        <ul class="treeview-menu">
+            {% for m in v.values %}
+                {% for n in m %}
+                    <li><a href="{{n|getitemurl}}"><i class="fa fa-circle-o"></i> {{ n|getkeys }}</a></li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </li>
+
+{% endfor %}

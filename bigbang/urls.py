@@ -14,12 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from snkrs.views import *
+from django.conf.urls import url,include
+
+
 urlpatterns = [
-    path(r'admin/', admin.site.urls),
-    path(r'login/', user_login),
-    path(r'index/', home_page),
-    path(r'index/forms/newSKU.html', newSKU),
-    path(r'index/forms/bought.html', bought_new),
+    url(r'^admin/', admin.site.urls),
+    url(r'^account/',include('spaceship.urls_account',namespace="spaceship_account")),
+    url(r'^form/',include('spaceship.urls_form',namespace="spaceship_form")),
+    url(r'^table/',include('spaceship.urls_table',namespace="spaceship_table")),
+    url(r'^main/',include('spaceship.urls_main',namespace="spaceship_main")),
+    # path(r'login.html/', user_login),
+    # path(r'index/', home_page),
+    # path(r'index/warehouse_in.html', warehouse_in),
+    # path(r'index/forms/bought.html', bought_new),
 ]

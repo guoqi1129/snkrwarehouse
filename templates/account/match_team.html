@@ -1,0 +1,28 @@
+{% extends 'spaceship/base_main.html' %}
+{% block js1 %}
+    <script src="/static/myjs/creat_team.js"></script>
+{% endblock %}
+{% block smalltitle %}
+{{ title }}
+{% endblock %}
+{% block content %}
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="text-danger">{{ inform }}</p>
+                <div class="form-group" >
+                        <form action="." method="post" id="creatTeamForm">
+
+                                {{ match_team_form.as_p }}
+                        {% csrf_token %}
+                            <button class="btn btn-mid form-control btn-primary plus-user" type="submit"><i class="icon ion-plus-round"></i> 添加匹配</button>
+
+                        </form>
+                </div>
+                <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+{% endblock %}

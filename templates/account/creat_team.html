@@ -1,0 +1,57 @@
+{% extends 'spaceship/base_main.html' %}
+{% block js1 %}
+    <script src="/static/myjs/creat_team.js"></script>
+{% endblock %}
+{% block smalltitle %}
+{{ title }}
+{% endblock %}
+{% block content %}
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-danger">{{ inform }}</p>
+                <div class="form-group" >
+                        <form action="." method="post" id="creatTeamForm">
+                        {#                        {{ form.as_p }}#}
+                        {% csrf_token %}
+                        {% for field in form_creat_team %}
+                            {{ field.label_tag }} {{ field }}{{ field.errors }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        {% endfor %}
+                            <p></p>
+                            <div class = 'col-md-6'>
+                                <button class="btn btn-mid form-control btn-primary plus-user" type="button"><i class="icon ion-plus-round"></i>  添加用户</button>
+                            </div>
+                            <div class = 'col-md-6'>
+                                <button class="btn btn-mid form-control btn-primary minus-user" type="button"><i class="icon ion-minus-round"></i>  减少用户</button>
+                            </div>
+
+                            <div class="='row">
+                        <div class="add-sub-form">
+                            <div class="subform1">
+                            <div class="col-md-6">
+                            <label for="id_form-0-username">用户名:</label> <input type="text" name="form-0-username" class="form-control" id="id_form-0-username" required>
+                            </div><div class="col-md-6">
+                                <label for="id_form-0-percentage">所占比例(100以内数字):</label> <input type="text" name="form-0-percentage" class="form-control" required id="id_form-0-percentage">
+                            </div>
+                            </div>
+
+                        </div>
+
+                        </div>
+                        <div class="text-warning">*用户为团队内其他用户，百分比为100以内数字，代表所占百分比，百分比填写完成后，剩下的是自己所占的百分比</div>
+                        <div>
+                            <button class="btn btn-block btn-primary btn-md" id="creatTeamSub" type="submit">确认</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.form-group -->
+            </div>
+
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+{% endblock %}

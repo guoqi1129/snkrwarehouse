@@ -1,48 +1,61 @@
+
 <!DOCTYPE html>
 {% load staticfiles %}
-<html lang="en-us" >
+<html>
 <head>
-    <title>登陆 | 宇宙中心</title>
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/login.css">
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
-    <meta name="robots" content="NONE,NOARCHIVE">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>宇宙飞船，飞越无限</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% include 'common/commoncss.html' %}
+    {% block css %}{% endblock %}
 </head>
-<body class=" login"
-      data-admin-utc-offset="0">
-<!-- Container -->
-<div id="container">
-    <!-- Header -->
-    <div id="header">
-        <div id="branding">
-
-            <h1 id="site-name"><a href="/admin/">这里就是宇宙</a></h1>
-
-        </div>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b>Space</b>SHIP</a>
     </div>
-    <!-- END Header -->
-    <!-- Content -->
-    <div id="content" class="colM">
-        <div id="content-main">
-            <form action="." method="post" id="login-form">{% csrf_token %}
-                {{ form.as_p }}
-                <input type="hidden" name="next" value="{{ next }}">
-                <div class="submit-row">
-                    <label>&nbsp;</label><input type="submit" value="来了，老弟">
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">{% block msg %}请检票...{% endblock %}</p>
+
+        <form class= "form-horizontal" action="" method="post" id="login-form">
+            {% block form %}
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field.label_tag }} {{ field }}{{ field.errors }}
+                    {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endblock %}
+            <div class="row">
+
+                <!-- /.col -->
+                <div class="col-xs-4 pull-right">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">进入</button>
                 </div>
-            </form>
+                <!-- /.col -->
+                {% block inform %}
+                    {% if inform %}
+                        <p class="text-warning text-center">{{ inform }}</p>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </form>
 
-        </div>
-
-
-        <br class="clear">
+        <!-- /.social-auth-links -->
+        {% block herf %}
+            <a href="#">忘记密码？</a><br>
+            <a href="{% url "spaceship_account:register" %}" class="text-center">申请船票</a>
+        {% endblock %}
     </div>
-    <!-- END Content -->
-
-    <div id="footer"></div>
+    <!-- /.login-box-body -->
 </div>
-<!-- END Container -->
+<!-- /.login-box -->
 
+{% include 'common/commonjs.html' %}
+{% block js %}{% endblock %}
 </body>
 </html>

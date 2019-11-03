@@ -1,0 +1,91 @@
+{% extends 'spaceship/base_main.html' %}
+{% block js1 %}
+    <script src="/static/select2/dist/js/select2.full.js"></script>
+    <script src="/static/myjs/warehouse_in.js"></script>
+    <script src="/static/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+{% endblock %}
+{% block css1 %}
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/static/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+{% endblock %}
+{% block smalltitle %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+
+
+    <div class="box-body">
+
+        <div class="row">
+
+            <div class = "col-md-4">
+                <div class="input-group">
+                    <input type="text" class="form-control search-input" placeholder="按照品名或编号搜索">
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary search"><i class="fa fa-search"></i></button>
+              </span>
+                </div>
+                <div class = "col-md-13">
+            <div class="form-group" >
+                <select multiple class="form-control input-md search-result" style="height:500px">
+                </select>
+            </div>
+                </div>
+            <p class="alert-warning search_result"></p>
+            </div>
+            <div class="form-group" >
+            <form action="." method="post" id="pwdChangeForm">
+                <div class="col-md-4">
+                <h4>商品信息</h4>
+
+                <p>{{ inform }}</p>
+
+
+                        {#                        {{ form.as_p }}#}
+                        {% csrf_token %}
+                        {% for field in form_goods %}
+                            {{ field.label_tag }} {{ field }}{{ field.errors }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        {% endfor %}
+
+                    <h4>店铺信息</h4>
+                    {% for field in form_storeinfo %}
+                        {{ field.label_tag }} {{ field }}{{ field.errors }}
+                        {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <!-- /.form-group -->
+
+                <div class="col-md-4">
+                    <h4>价格与数量信息</h4>
+                    <p>{{ inform }}</p>
+                    <div class="form-group" >
+                        {% for field in form_buyinfo %}
+                            {{ field.label_tag }} {{ field }}{{ field.errors }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        {% endfor %}
+                        <p></p>
+                        <label id="final-price"></label>
+                        <div>
+
+                            <button class="btn btn-block btn-primary btn-md" id="warehousein" type="submit">确认</button>
+                        </div>
+
+                    </div>
+                    <!-- /.form-group -->
+                </div>
+            </form>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+{% endblock %}

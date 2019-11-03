@@ -25,7 +25,7 @@ SECRET_KEY = 'wok#fo7s5^vwvd6kd6syp-ii%inb^vftpl%f&h6*@-)2y$l8&$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["10.128.225.55","127.0.0.1"]
 
 
 # Application definition
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'snkrs',
+    'spaceship',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sneakers',
         'USER': 'root',
-        'PASSWORD': 'guoqi1129',
+        'PASSWORD': 'Gqz@19881129',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -127,5 +127,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-LOGIN_URL = '/login'
+LOGIN_URL = '/account/login'

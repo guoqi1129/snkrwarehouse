@@ -1,0 +1,21 @@
+{% extends 'common/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <!-- skins-->
+    <link rel="stylesheet" href="{% static 'mycss/skins/_all-skins.min.css' %}">
+{% endblock %}
+
+{#{% block items %}#}
+{#    {% load index_filter %}#}
+{#{% for k,v in item.items %}#}
+{#    {% for m in v.values %}#}
+{#        {% for n in m %}#}
+{#            <h1>{{ n}}</h1>#}
+{#            {% endfor %}#}
+{#    {% endfor %}#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
+{% block js %}
+    <!-- SlimScroll -->
+    <script src="/static/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+{% endblock %}
